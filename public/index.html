@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Checklist</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="card">
+    <header class="head">
+      <h1>Checklist</h1>
+      <p id="counter" class="counter" aria-live="polite"></p>
+    </header>
+
+    <div id="notice" class="notice" role="status" hidden></div>
+
+    <form id="add-form" class="add" autocomplete="off">
+      <label for="new-item" class="visually-hidden">New item</label>
+      <input id="new-item" name="text" type="text" maxlength="200"
+             placeholder="Add an item…" enterkeyhint="done">
+      <button type="submit">Add</button>
+    </form>
+
+    <ul id="list" class="list"></ul>
+    <p id="empty" class="empty" hidden>Nothing here yet. Add your first item above.</p>
+
+    <footer class="foot">Saved in this browser only.</footer>
+  </main>
+</body>
+</html>
