@@ -107,8 +107,14 @@ branch (`git push -u origin <branch>`).
    Vercel CLI with the user's own account: run `npx -y vercel@53 login` in the background and give
    the user the device URL. Then `npx vercel@53 deploy --yes --scope <team-slug>` from the repo
    root (add `--prod` only if the user approved a production-labelled deploy). Never print the CLI's
-   auth file. Add `.vercel/` to `.gitignore`.
-4. If deployment protection blocks automated testing, use the MCP `get_access_to_vercel_url`
+   auth file. Add `.vercel/` to `.gitignore` (the CLI appends a duplicate `.vercel` line; discard it).
+   A CLI-created project is **not** Git-linked, so later pushes don't deploy automatically. Redeploy
+   with the CLI, or ask the user to connect the repo in the Vercel dashboard.
+5. Get the real public URL from `vercel inspect <deployment-url> --scope <team>` (its Aliases).
+   Don't guess `<project>.vercel.app`: if that name is taken, Vercel assigns a suffixed alias
+   (e.g. `<project>-alpha.vercel.app`), and the unsuffixed host may be someone else's site. The
+   per-deployment URL is usually behind Vercel Authentication (302). Test the public alias.
+6. If deployment protection blocks automated testing, use the MCP `get_access_to_vercel_url`
    share link, or ask the user to disable protection for this project.
 
 **Verify the deployed app.** Rerun the browser suite with `BASE_URL=<deployed url>` and take at

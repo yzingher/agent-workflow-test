@@ -19,3 +19,11 @@ Reviewed against `docs/plan.md` (v2). Two rounds.
 
 Items 1, 2 and 5 are in the local test server only, not the deployed app.
 After all fixes: `node tests/e2e.cjs` → 13/13 passed.
+
+## Deployed verification
+
+- Deployed with `vercel deploy --prod` (CLI, user's Vercel login) to project `agent-workflow-test`
+  in team `yzingher-gmailcoms-projects`. Public URL: https://agent-workflow-test-alpha.vercel.app
+- The deployed `index.html`, `app.js` and `styles.css` are byte-identical to the repo at commit `5375937`.
+- `BASE_URL=https://agent-workflow-test-alpha.vercel.app node tests/e2e.cjs` → 13/13 passed.
+- Live screenshots: `docs/screenshots/live/`.
